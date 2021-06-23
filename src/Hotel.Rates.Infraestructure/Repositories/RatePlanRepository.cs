@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using FinancialApp.Data.Repositories;
 using Hotel.Rates.Data;
 using Hotel.Rates.Infraestructure.Context;
 using Microsoft.EntityFrameworkCore;

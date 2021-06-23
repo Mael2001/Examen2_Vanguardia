@@ -1,10 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using FinancialApp.Core;
-using FinancialApp.Core.Interfaces;
-using Hotel.Rates.Data.Enum;
-using Hotel.Rates.Data.Plans;
-using Microsoft.EntityFrameworkCore;
+using Hotel.Rates.Data.Interfaces;
 
 namespace Hotel.Rates.Data.Services
 {

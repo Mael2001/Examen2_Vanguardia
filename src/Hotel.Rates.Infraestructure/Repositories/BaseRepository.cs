@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using FinancialApp.Core.Interfaces;
+using Hotel.Rates.Data.Interfaces;
 using Hotel.Rates.Infraestructure.Context;
 
-namespace FinancialApp.Data.Repositories
+namespace Hotel.Rates.Infraestructure.Repositories
 {
     public abstract class BaseRepository<TEntity> : IRepository<TEntity>
     {
         private readonly InventoryContext _inventoryContext;
-        public BaseRepository(InventoryContext inventoryContext)
+
+        protected BaseRepository(InventoryContext inventoryContext)
         {
             _inventoryContext = inventoryContext;
         }

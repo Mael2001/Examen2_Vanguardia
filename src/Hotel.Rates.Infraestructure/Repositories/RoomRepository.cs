@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Hotel.Rates.Data;
 using Hotel.Rates.Data.Entities;
 using Hotel.Rates.Infraestructure.Context;
 
-namespace FinancialApp.Data.Repositories
+namespace Hotel.Rates.Infraestructure.Repositories
 {
     public class RoomRepository : BaseRepository<Room>
     {

@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using FinancialApp.Core.Interfaces;
-using FinancialApp.Data.Repositories;
 using Hotel.Rates.Data;
 using Hotel.Rates.Data.Entities;
 using Hotel.Rates.Data.Enum;

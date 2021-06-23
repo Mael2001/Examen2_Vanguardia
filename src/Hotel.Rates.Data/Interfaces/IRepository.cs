@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace FinancialApp.Core.Interfaces
+namespace Hotel.Rates.Data.Interfaces
 {
     public interface IRepository<TEntity>
     {

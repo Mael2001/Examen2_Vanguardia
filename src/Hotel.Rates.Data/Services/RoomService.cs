@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using FinancialApp.Core;
-using FinancialApp.Core.Interfaces;
 using Hotel.Rates.Data.Entities;
 using Hotel.Rates.Data.Interfaces;
 

@@ -14,17 +14,17 @@ namespace Hotel.Rates.Api.Controllers
     [Route("api/[controller]")]
     public class RoomsController : ControllerBase
     {
-        private readonly RoomService _rooomService;
+        private readonly RoomService _roomService;
 
-        public RoomsController(RoomService rooomService)
+        public RoomsController(RoomService roomService)
         {
-            _rooomService = rooomService;
+            _roomService = roomService;
         }
 
         [HttpGet]
         public IActionResult Get()
         {
-            var rooms = _rooomService.GetRooms()
+            var rooms = _roomService.GetRooms()
                 .Result
                 .Select(x => new RoomDto
                 {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using FinancialApp.Core;
 
-namespace Hotel.Rates.Data.Enum
+namespace Hotel.Rates.Data.Interfaces
 {
     public interface IRatePlanService
     {
