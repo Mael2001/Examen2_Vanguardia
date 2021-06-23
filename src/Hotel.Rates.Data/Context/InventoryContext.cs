@@ -1,10 +1,8 @@
-﻿using Hotel.Rates.Data.Configurations;
+﻿using Hotel.Rates.Data;
+using Hotel.Rates.Data.Configurations;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Hotel.Rates.Data
+namespace Hotel.Rates.Infraestructure.Context
 {
     public class InventoryContext : DbContext
     {
