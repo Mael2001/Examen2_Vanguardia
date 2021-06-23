@@ -30,6 +30,11 @@ namespace Hotel.Rates.Infraestructure.Repositories
             return ratePlan;
         }
 
+        public override void Decreace()
+        {
+            throw new NotImplementedException();
+        }
+
         public override IReadOnlyList<RatePlan> Filter(Func<RatePlan, bool> predicate)
         {
             return _inventoryContext.RatePlans.Where(predicate).ToList();

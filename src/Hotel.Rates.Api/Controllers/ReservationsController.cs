@@ -6,6 +6,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FinancialApp.Core;
+using Hotel.Rates.Data.Entities;
+using Hotel.Rates.Data.Rules;
+using Hotel.Rates.Data.Services;
 using Hotel.Rates.Infraestructure.Context;
 
 namespace Hotel.Rates.Api.Controllers
@@ -14,38 +18,32 @@ namespace Hotel.Rates.Api.Controllers
     [Route("api/[controller]")]
     public class ReservationsController : ControllerBase
     {
-        private readonly InventoryContext _context;
+        private readonly ReservationService _reservationService;
+        private readonly RoomService _roomService;
 
-        public ReservationsController(InventoryContext context)
+        public ReservationsController(ReservationService reservationService,
+            RoomService roomService)
         {
-            this._context = context;
+            _reservationService = reservationService;
+            _roomService = roomService;
         }
 
         [HttpPost]
         public IActionResult Post([FromBody]ReservationModel reservationModel)
         {
-            var ratePlan = _context
-                .NightlyRatePlans
-                .Include(r => r.Seasons)
-                .Include(r => r.RatePlanRooms)
-                .ThenInclude(r => r.Room)
-                .First(r => r.Id == reservationModel.RatePlanId);
-            var canReserve = ratePlan.Seasons
-                .Any(s => s.StartDate >= reservationModel.ReservationStart && s.EndDate <= reservationModel.ReservationEnd);
-            var room = ratePlan.RatePlanRooms
-                .First(r => r.RoomId == reservationModel.RoomId && r.RatePlanId == reservationModel.RatePlanId);
-            var isRoomAvailable = room.Room.Amount > 0 &&
-                room.Room.MaxAdults > reservationModel.AmountOfChildren &&
-                room.Room.MaxChildren <= reservationModel.AmountOfChildren;
-
-            if (canReserve && isRoomAvailable)
+            var ratePlan = _reservationService.canReserve(reservationModel.RatePlanId, reservationModel);
+            var room = _reservationService.isAvailable(reservationModel.RatePlanId, reservationModel);
+            if (ratePlan.ResponseCode==ResponseCode.Success &&ratePlan.ResponseCode == ResponseCode.Success)
             {
-                room.Room.Amount -= 1;
-                _context.SaveChanges();
+                _roomService.DecreaceResult(room.Result);   
                 var days = (reservationModel.ReservationEnd - reservationModel.ReservationStart).TotalDays;
+                var engine = new RuleEngine.Builder()
+                    .WithIntervalBuilder()
+                    .WithNightlyBuilder()
+                    .Build();
                 return Ok(new
                 {
-                    Price = days * ratePlan.Price
+                    Price = engine.GetPrice(ratePlan.Result,(int) days)
                 });
             }
             return BadRequest();

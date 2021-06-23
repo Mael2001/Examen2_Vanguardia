@@ -8,6 +8,7 @@ namespace Hotel.Rates.Data.Interfaces
         IReadOnlyList<TEntity> Get();
         TEntity Getid(int id);
         TEntity Create(TEntity entity);
+        void Decreace(TEntity entity);
         IReadOnlyList<TEntity> Filter(Func<TEntity, bool> predicate);
     }
 }

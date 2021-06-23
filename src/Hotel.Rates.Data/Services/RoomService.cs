@@ -18,5 +18,11 @@ namespace Hotel.Rates.Data.Services
         {
             return ServiceResult<IReadOnlyList<Room>>.SuccessResult(_roomRepository.Get());
         }
+
+        public ServiceResult<bool> DecreaceResult(Room room)
+        {
+            _roomRepository.Decreace(room);
+            return ServiceResult<bool>.SuccessResult(true);
+        }
     }
 }

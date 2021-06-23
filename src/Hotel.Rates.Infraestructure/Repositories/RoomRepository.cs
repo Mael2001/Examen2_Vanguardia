@@ -25,6 +25,12 @@ namespace Hotel.Rates.Infraestructure.Repositories
             return _inventoryContext.Rooms.FirstOrDefault(x => x.Id == id);
         }
 
+        public override void Decreace(Room entity)
+        {
+            _inventoryContext.Rooms.FirstOrDefault(x => x == entity).Amount-=1;
+            _inventoryContext.SaveChanges();
+        }
+
         public override IReadOnlyList<Room> Filter(Func<Room, bool> predicate)
         {
             return _inventoryContext.Rooms.Where(predicate).ToList();

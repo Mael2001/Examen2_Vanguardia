@@ -7,5 +7,6 @@ namespace Hotel.Rates.Data.Interfaces
     public interface IRoomService
     {
         ServiceResult<IReadOnlyList<Room>> GetRooms();
+        ServiceResult<bool> DecreaceResult(Room room);
     }
 }

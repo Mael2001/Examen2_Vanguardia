@@ -16,13 +16,14 @@ namespace Hotel.Rates.Infraestructure.Repositories
 
         public abstract IReadOnlyList<TEntity> Get();
         public abstract TEntity Getid(int id);
-
         public TEntity Create(TEntity entity)
         {
             _inventoryContext.AddAsync(entity);
             _inventoryContext.SaveChangesAsync();
             return entity;
         }
+
+        public abstract void Decreace(TEntity entity);
 
         public abstract IReadOnlyList<TEntity> Filter(Func<TEntity, bool> predicate);
     }

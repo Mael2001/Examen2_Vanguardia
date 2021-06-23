@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using System;
+using Hotel.Rates.Data.Entities;
+using Hotel.Rates.Infraestructure.Context;
 using Xunit;
 
 namespace Hotel.Rates.Tests
