@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Hotel.Rates.Data.Enum;
 
-namespace Hotel.Rates.Data
+namespace Hotel.Rates.Data.Plans
 {
     public class IntervalRatePlan : RatePlan
     {
         public IntervalRatePlan()
         {
-            RatePlanType = (int) Data.RatePlanType.Interval;
+            RatePlanType = (int) Enum.RatePlanType.Interval;
         }
 
         public int IntervalLength { get; set; }

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Hotel.Rates.Data
+﻿namespace Hotel.Rates.Data.Enum
 {
     public enum RatePlanType
     {

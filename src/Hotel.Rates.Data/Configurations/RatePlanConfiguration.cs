@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Hotel.Rates.Data.Enum;
+using Hotel.Rates.Data.Plans;
 
 namespace Hotel.Rates.Data.Configurations
 {
