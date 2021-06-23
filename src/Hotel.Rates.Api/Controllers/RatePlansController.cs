@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Hotel.Rates.Data.Services;
 using Hotel.Rates.Infraestructure.Context;
 
 namespace Hotel.Rates.Api.Controllers
@@ -13,10 +14,12 @@ namespace Hotel.Rates.Api.Controllers
     [Route("api/[controller]")]
     public class RatePlansController : ControllerBase
     {
+        private readonly RatePlanService _ratePlanService;
         private readonly InventoryContext _context;
 
-        public RatePlansController(InventoryContext context)
+        public RatePlansController(RatePlanService ratePlanService,  InventoryContext context)
         {
+            _ratePlanService = ratePlanService;
             _context = context;
         }
         
@@ -44,7 +47,7 @@ namespace Hotel.Rates.Api.Controllers
                         r.Room.Amount
                     })
                 });
-            return Ok(result);
+            return Ok(_ratePlanService.GetRatePlans());
         }
 
         [HttpGet("{id}")]

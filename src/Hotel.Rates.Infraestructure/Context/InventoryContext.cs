@@ -1,5 +1,6 @@
 ﻿using Hotel.Rates.Data;
 using Hotel.Rates.Data.Configurations;
+using Hotel.Rates.Data.Entities;
 using Hotel.Rates.Data.Plans;
 using Hotel.Rates.Infraestructure.Configurations;
 using Microsoft.EntityFrameworkCore;

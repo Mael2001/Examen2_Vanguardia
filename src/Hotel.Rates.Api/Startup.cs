@@ -2,8 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FinancialApp.Core.Interfaces;
+using FinancialApp.Data.Repositories;
 using Hotel.Rates.Data;
+using Hotel.Rates.Data.Entities;
+using Hotel.Rates.Data.Enum;
+using Hotel.Rates.Data.Interfaces;
+using Hotel.Rates.Data.Services;
 using Hotel.Rates.Infraestructure.Context;
+using Hotel.Rates.Infraestructure.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,6 +37,10 @@ namespace Hotel.Rates.Api
         {
             services.AddControllers().AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore); ;
             services.AddDbContext<InventoryContext>((s, o) => o.UseSqlite("Data Source=data.db"));
+            services.AddScoped<IRepository<Room>, RoomRepository>();
+            services.AddScoped<IRepository<RatePlan>, RatePlanRepository>();
+            services.AddScoped<IRoomService, RoomService>();
+            services.AddScoped<IRatePlanService, RatePlanService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

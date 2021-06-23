@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Hotel.Rates.Api.Models;
+using Hotel.Rates.Data.Services;
 using Hotel.Rates.Infraestructure.Context;
 
 namespace Hotel.Rates.Api.Controllers
@@ -12,17 +14,28 @@ namespace Hotel.Rates.Api.Controllers
     [Route("api/[controller]")]
     public class RoomsController : ControllerBase
     {
-        private readonly InventoryContext _inventoryContext;
+        private readonly RoomService _rooomService;
 
-        public RoomsController(InventoryContext inventoryContext)
+        public RoomsController(RoomService rooomService)
         {
-            _inventoryContext = inventoryContext;
+            _rooomService = rooomService;
         }
 
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_inventoryContext.Rooms);
+            var rooms = _rooomService.GetRooms()
+                .Result
+                .Select(x => new RoomDto
+                {
+                    Amount = x.Amount,
+                    Id = x.Id,
+                    MaxAdults = x.MaxAdults,
+                    MaxChildren = x.MaxChildren,
+                    Name = x.Name,
+                    RatePlanRooms = x.RatePlanRooms
+                });
+            return Ok(rooms);
         }
     }
 }

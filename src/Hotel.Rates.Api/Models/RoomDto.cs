@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
+using Hotel.Rates.Data;
 
-namespace Hotel.Rates.Data.Entities
+namespace Hotel.Rates.Api.Models
 {
-    public class Room
+    public class RoomDto
     {
-        public Room()
+        public RoomDto()
         {
             RatePlanRooms = new List<RatePlanRoom>();
         }
@@ -19,6 +20,5 @@ namespace Hotel.Rates.Data.Entities
         public int Amount { get; set; }
 
         public ICollection<RatePlanRoom> RatePlanRooms { get; set; }
-
     }
 }

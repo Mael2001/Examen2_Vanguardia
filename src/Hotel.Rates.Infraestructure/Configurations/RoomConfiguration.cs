@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Hotel.Rates.Data;
+using Hotel.Rates.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
