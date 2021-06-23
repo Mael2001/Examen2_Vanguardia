@@ -40,9 +40,9 @@ namespace Hotel.Rates.Tests.Services
             roomRepositoryMock.Setup(t => t.Get())
                 .Returns(room);
 
-            var ratePlanService = new RoomService(roomRepositoryMock.Object);
+            var roomService = new RoomService(roomRepositoryMock.Object);
 
-            var result = ratePlanService.GetRooms();
+            var result = roomService.GetRooms();
             Assert.Equal(result.ResponseCode, ResponseCode.Success);
         }
     }

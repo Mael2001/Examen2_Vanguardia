@@ -6,7 +6,7 @@ using Hotel.Rates.Infraestructure.Repositories;
 using Hotel.Rates.Tests.Context;
 using Xunit;
 
-namespace Hotel.Rates.Tests.Services
+namespace Hotel.Rates.Tests.Repositories
 {
     public class RatePlanRepositoryTest
     {
