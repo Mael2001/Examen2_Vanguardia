@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FinancialApp.Core;
 using Hotel.Rates.Data.Services;
 using Hotel.Rates.Infraestructure.Context;
 
@@ -15,18 +16,16 @@ namespace Hotel.Rates.Api.Controllers
     public class RatePlansController : ControllerBase
     {
         private readonly RatePlanService _ratePlanService;
-        private readonly InventoryContext _context;
 
-        public RatePlansController(RatePlanService ratePlanService,  InventoryContext context)
+        public RatePlansController(RatePlanService ratePlanService)
         {
             _ratePlanService = ratePlanService;
-            _context = context;
         }
         
         [HttpGet]
         public IActionResult Get()
         {
-            var result = _context.RatePlans.Include(r => r.Seasons).Include(r => r.RatePlanRooms).ThenInclude(r => r.Room)
+            var result = _ratePlanService.GetRatePlans().Result
                 .Select(x => new
                 {
                     RatePlanId = x.Id,
@@ -47,17 +46,17 @@ namespace Hotel.Rates.Api.Controllers
                         r.Room.Amount
                     })
                 });
-            return Ok(_ratePlanService.GetRatePlans());
+            return Ok(result);
         }
 
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var ratePlan = _context.RatePlans
-                .Include(r => r.Seasons)
-                .Include(r => r.RatePlanRooms)
-                .ThenInclude(r => r.Room)
-                .FirstOrDefault(x => x.Id == id);
+            if (_ratePlanService.GetRatePlanById(id).ResponseCode == ResponseCode.Error)
+            {
+                return BadRequest();
+            }
+            var ratePlan = _ratePlanService.GetRatePlanById(id).Result;
 
             return Ok(new
             {

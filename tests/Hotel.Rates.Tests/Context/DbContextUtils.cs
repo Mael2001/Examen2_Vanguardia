@@ -1,6 +1,8 @@
-﻿using Hotel.Rates.Data;
+﻿using System.Collections.Generic;
+using Hotel.Rates.Data;
 using Hotel.Rates.Data.Entities;
 using Hotel.Rates.Data.Enum;
+using Hotel.Rates.Data.Plans;
 using Hotel.Rates.Infraestructure.Context;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
@@ -52,9 +54,17 @@ namespace Hotel.Rates.Tests.Context
                     Amount = 200,
                 },
                 RatePlanId = 20,
-                
+                Rateplan = new IntervalRatePlan
+                {
+                    Name = "Prueba",
+                    Id = 2,
+                    RatePlanType = 1,
+                    Price = 20,
+                    RatePlanRooms = new List<RatePlanRoom> { },
+                    Seasons = new List<Season>(),
+                    IntervalLength = 2
+                }
             });
         }
-
     }
 }

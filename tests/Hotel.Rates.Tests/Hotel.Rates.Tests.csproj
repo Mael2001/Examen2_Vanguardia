@@ -19,8 +19,4 @@
     <ProjectReference Include="..\..\src\Hotel.Rates.Infraestructure\Hotel.Rates.Infraestructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
-
 </Project>

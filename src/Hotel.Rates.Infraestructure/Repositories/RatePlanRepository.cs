@@ -30,7 +30,7 @@ namespace Hotel.Rates.Infraestructure.Repositories
             return ratePlan;
         }
 
-        public override void Decreace()
+        public override void Decreace(RatePlan entity)
         {
             throw new NotImplementedException();
         }
