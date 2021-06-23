@@ -37,6 +37,7 @@ namespace Hotel.Rates.Data.Services
                 room.Room.MaxAdults > reservation.AmountOfChildren &&
                 room.Room.MaxChildren <= reservation.AmountOfChildren)
             {
+                _roomRepository.Decreace(room.Room);
                 return ServiceResult<Room>.SuccessResult(room.Room);
             }
             

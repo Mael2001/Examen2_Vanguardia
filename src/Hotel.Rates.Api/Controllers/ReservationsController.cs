@@ -19,13 +19,10 @@ namespace Hotel.Rates.Api.Controllers
     public class ReservationsController : ControllerBase
     {
         private readonly ReservationService _reservationService;
-        private readonly RoomService _roomService;
 
-        public ReservationsController(ReservationService reservationService,
-            RoomService roomService)
+        public ReservationsController(ReservationService reservationService)
         {
             _reservationService = reservationService;
-            _roomService = roomService;
         }
 
         [HttpPost]
@@ -35,7 +32,6 @@ namespace Hotel.Rates.Api.Controllers
             var room = _reservationService.isAvailable(reservationModel.RatePlanId, reservationModel);
             if (ratePlan.ResponseCode==ResponseCode.Success &&ratePlan.ResponseCode == ResponseCode.Success)
             {
-                _roomService.DecreaceResult(room.Result);   
                 var days = (reservationModel.ReservationEnd - reservationModel.ReservationStart).TotalDays;
                 var engine = new RuleEngine.Builder()
                     .WithIntervalBuilder()
