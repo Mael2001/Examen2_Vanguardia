@@ -18,9 +18,9 @@ namespace Hotel.Rates.Data.Services
             _ratePlanRepository = ratePlanRepository;
             _roomRepository = roomRepository;
         }
-        public ServiceResult<RatePlan> canReserve(int id, ReservationModel reservation)
+        public ServiceResult<RatePlan> canReserve(ReservationModel reservation)
         {
-            var ratePlan = _ratePlanRepository.Getid(id);
+            var ratePlan = _ratePlanRepository.Getid(reservation.RatePlanId);
             if (ratePlan.Seasons.Any(s => s.StartDate >= reservation.ReservationStart && s.EndDate <= reservation.ReservationEnd))
             {
                 return ServiceResult<RatePlan>.SuccessResult(ratePlan);
@@ -29,9 +29,9 @@ namespace Hotel.Rates.Data.Services
             return ServiceResult<RatePlan>.ErrorResult($"Can't Reserve");
         }
 
-        public ServiceResult<Room> isAvailable(int id, ReservationModel reservation)
+        public ServiceResult<Room> isAvailable(ReservationModel reservation)
         {
-            var room = _ratePlanRepository.Getid(id)
+            var room = _ratePlanRepository.Getid(reservation.RatePlanId)
                 .RatePlanRooms.FirstOrDefault(x => x.RoomId == reservation.RoomId && x.RatePlanId == reservation.RatePlanId);
             if (room.Room.Amount > 0 &&
                 room.Room.MaxAdults > reservation.AmountOfChildren &&

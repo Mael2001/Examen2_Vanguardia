@@ -6,7 +6,7 @@ namespace Hotel.Rates.Data.Interfaces
 {
     public interface IReservationService
     {
-        ServiceResult<RatePlan> canReserve(int id, ReservationModel reservation);
-        ServiceResult<Room> isAvailable(int id, ReservationModel reservation);
+        ServiceResult<RatePlan> canReserve (ReservationModel reservation);
+        ServiceResult<Room> isAvailable(ReservationModel reservation);
     }
 }

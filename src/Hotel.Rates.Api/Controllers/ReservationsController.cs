@@ -28,8 +28,8 @@ namespace Hotel.Rates.Api.Controllers
         [HttpPost]
         public IActionResult Post([FromBody]ReservationModel reservationModel)
         {
-            var ratePlan = _reservationService.canReserve(reservationModel.RatePlanId, reservationModel);
-            var room = _reservationService.isAvailable(reservationModel.RatePlanId, reservationModel);
+            var ratePlan = _reservationService.canReserve(reservationModel);
+            var room = _reservationService.isAvailable(reservationModel);
             if (ratePlan.ResponseCode==ResponseCode.Success &&ratePlan.ResponseCode == ResponseCode.Success)
             {
                 var days = (reservationModel.ReservationEnd - reservationModel.ReservationStart).TotalDays;
