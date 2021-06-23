@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Castle.Core.Internal;
 using Hotel.Rates.Data;
 using Hotel.Rates.Data.Entities;
 using Hotel.Rates.Data.Plans;
@@ -40,9 +43,10 @@ namespace Hotel.Rates.Tests.Repositories
             var ratePlanRepository = new RatePlanRepository(context);
 
             //act
-            var ratePlansResult = ratePlanRepository.Getid(2);
+            var ratePlansResult = ratePlanRepository.Get();
+            
             //assert
-            Assert.Equal(ratePlansResult.Id, ratePlans.Rateplan.Id);
+            Assert.True(ratePlansResult.Where(x=> x.Id==2).IsNullOrEmpty());
         }
     }
 }

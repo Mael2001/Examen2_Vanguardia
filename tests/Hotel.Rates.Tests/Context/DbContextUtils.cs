@@ -13,7 +13,7 @@ namespace Hotel.Rates.Tests.Context
     {
         public static InventoryContext GetInMemoryContext()
         {
-            var connection = new SqliteConnection("DataSource=:memory");
+            var connection = new SqliteConnection("DataSource=:memory:");
             connection.Open();
             var dbContextOptions = new DbContextOptionsBuilder<InventoryContext>()
                 .UseSqlite(connection)
@@ -53,7 +53,7 @@ namespace Hotel.Rates.Tests.Context
                     Name = "Room 1",
                     Amount = 200,
                 },
-                RatePlanId = 20,
+                RatePlanId = 2,
                 Rateplan = new IntervalRatePlan
                 {
                     Name = "Prueba",
