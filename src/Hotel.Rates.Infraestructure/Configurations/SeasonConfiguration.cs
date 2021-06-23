@@ -1,10 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using Hotel.Rates.Data;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Hotel.Rates.Data.Configurations
+namespace Hotel.Rates.Infraestructure.Configurations
 {
     public class SeasonConfiguration : IEntityTypeConfiguration<Season>
     {

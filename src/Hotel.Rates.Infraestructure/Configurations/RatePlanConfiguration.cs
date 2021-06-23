@@ -1,13 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Hotel.Rates.Data;
 using Hotel.Rates.Data.Enum;
 using Hotel.Rates.Data.Plans;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Hotel.Rates.Data.Configurations
+namespace Hotel.Rates.Infraestructure.Configurations
 {
     public class RatePlanConfiguration : IEntityTypeConfiguration<RatePlan>
     {
