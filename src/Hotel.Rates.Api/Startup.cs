@@ -39,6 +39,7 @@ namespace Hotel.Rates.Api
             services.AddScoped<IRepository<RatePlan>, RatePlanRepository>();
             services.AddScoped<IRoomService, RoomService>();
             services.AddScoped<IRatePlanService, RatePlanService>();
+            services.AddScoped<IReservationService, ReservationService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
