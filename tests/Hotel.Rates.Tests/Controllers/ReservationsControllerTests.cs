@@ -180,7 +180,7 @@ namespace Hotel.Rates.Tests
             var reservationsService = new ReservationService(ratePlanRepositoryMock.Object,roomRepositoryMock.Object);
 
             var controller = new ReservationsController(reservationsService);
-
+            
             var response = controller.Post(reservation);
 
             Assert.IsType<OkObjectResult>(response);
